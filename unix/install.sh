@@ -112,7 +112,7 @@ echo "'
 ##       Thanks goes to [Noodle] on Freenode.               ##
 ##############################################################
 # Use as many addnode= settings as you like to connect to specific peers
-#addnode=IP_ADDRESS:10333
+#addnode=dnsseed.beyonddata.llc
 # ... or use as many connect= settings as you like to connect ONLY
 # to specific peers:
 #connect=localhost:10333
