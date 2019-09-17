@@ -2,59 +2,66 @@
 function pause(){
     read -p "$*"
 }
+
 echo "
-=================================================================
- ____  ________     ______  _   _ _____   _____ ____ _____ _   _ 
-|  _ \|  ____\ \   / / __ \| \ | |  __ \ / ____/ __ \_   _| \ | |
-| |_) | |__   \ \_/ / |  | |  \| | |  | | |   | |  | || | |  \| |
-|  _ <|  __|   \   /| |  | |     | |  | | |   | |  | || | |     |
-| |_) | |____   | | | |__| | |\  | |__| | |___| |__| || |_| |\  |
-|____/|______|  |_|  \____/|_| \_|_____/ \_____\____/_____|_| \_|
-=================================================================
+==========================================================================
+ ____   ______ __     __ ____   _   _  _____    _____  ____  _____  _   _ 
+|  _ \ |  ____|\ \   / // __ \ | \ | ||  __ \  / ____|/ __ \|_   _|| \ | |
+| |_) || |__    \ \_/ /| |  | ||  \| || |  | || |    | |  | | | |  |  \| |
+|  _ < |  __|    \   / | |  | ||     || |  | || |    | |  | | | |  |     |
+| |_) || |____    | |  | |__| || |\  || |__| || |____| |__| |_| |_ | |\  |
+|____/ |______|   |_|   \____/ |_| \_||_____/  \_____|\____/|_____||_| \_|
+                                                                          
+==========================================================================
 Author: Kristian Kramer
 Donations [BYND]: BT8UTx2HjJmtY99Fm748aBjSdKedJfWwnQ
+
+*** This script will install the required dependencies and build Beyondcoin for Ubuntu 18.04 ***
+[NOTE]: to disable GUI, uncomment '--with-gui=no' on line 82.
 "
-pause "This script will install the required dependencies to build Beyondcoin. Press [Enter] to continue or [CTRL+C] to quit..."
+pause "Press [Enter] to continue or [CTRL+C] to quit..."
+
+#add Bitcoin repository
+sudo add-apt-repository ppa:bitcoin/bitcoin -y
 
 #shared libraries and dependencies
-sudo apt-get install git -y
-sudo apt-get install build-essential -y
-sudo apt-get install libtool -y
-sudo apt-get install autotools-dev -y
-sudo apt-get install automake -y
-sudo apt-get install pkg-config -y
-sudo apt-get install libssl-dev -y
-sudo apt-get install libevent-dev -y
-sudo apt-get install bsdmainutils -y
-sudo apt-get install python3 -y
-sudo apt-get install libboost-system-dev -y
-sudo apt-get install libboost-filesystem-dev -y
-sudo apt-get install libboost-chrono-dev -y
-sudo apt-get install libboost-test-dev -y
-sudo apt-get install libboost-thread-dev -y
-sudo apt-get install software-properties-common -y
-sudo add-apt-repository ppa:bitcoin/bitcoin -y
-sudo apt-get install libdb4.8-dev -y
-sudo apt-get install libdb4.8++-dev -y
-sudo apt-get install build-essential -y
-sudo apt-get install autoconf -y
-sudo apt-get install pkg-config -y
-sudo apt-get install libboost-all-dev -y
-sudo apt-get install libssl-dev -y
-sudo apt-get install libprotobuf-dev -y
-sudo apt-get install protobuf-compiler -y
-sudo apt-get install libqt4-dev -y
-sudo apt-get install libcanberra-gtk-module -y
-sudo apt-get install libqt5gui5 -y
-sudo apt-get install libqt5core5a -y
-sudo apt-get install libqt5dbus5 -y
-sudo apt-get install qttools5-dev -y
-sudo apt-get install qttools5-dev-tools -y
-sudo apt-get install libqrencode-dev -y
-#upnp
-sudo apt-get install libminiupnpc-dev -y
-#ZMQ
-sudo apt-get install libzmq3-dev -y
+sudo apt-get install \
+    git \
+    build-essential \
+    libtool \
+    autotools-dev \
+    automake \
+    pkg-config \
+    libssl-dev \
+    libevent-dev \
+    bsdmainutils \
+    python3 \
+    libboost-system-dev \
+    libboost-filesystem-dev \
+    libboost-chrono-dev \
+    libboost-test-dev \
+    libboost-thread-dev \
+    software-properties-common \
+    libdb4.8-dev \
+    libdb4.8++-dev \
+    build-essential \
+    autoconf \
+    pkg-config \
+    libboost-all-dev \
+    libssl-dev \
+    libprotobuf-dev \
+    protobuf-compiler \
+    libqt4-dev \
+    libcanberra-gtk-module \
+    libqt5gui5 \
+    libqt5core5a \
+    libqt5dbus5 \
+    qttools5-dev \
+    qttools5-dev-tools \
+    libqrencode-dev \
+    libminiupnpc-dev \
+    libzmq3-dev -y
+
 sudo apt-get update -y
 
 #install BerkelyDB for wallet support
@@ -77,7 +84,7 @@ sudo chmod -R 777 beyondcoin
 cd beyondcoin
 #build beyondcoin source
 ./autogen.sh
-./configure
+./configure #--with-gui=no
 sudo make install
 
 cd ~/.beyondcoin
@@ -112,7 +119,9 @@ echo "'
 ##       Thanks goes to [Noodle] on Freenode.               ##
 ##############################################################
 # Use as many addnode= settings as you like to connect to specific peers
-#addnode=dnsseed.beyonddata.llc
+addnode=dnsseed.beyonddata.llc
+addnode=52.40.235.89:10333
+addnode=3.224.138.95:10333
 # ... or use as many connect= settings as you like to connect ONLY
 # to specific peers:
 #connect=localhost:10333
