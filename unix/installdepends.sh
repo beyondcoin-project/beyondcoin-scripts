@@ -1,4 +1,21 @@
 #!/bin/sh
+logfile=install_depends.log
+
+printf "-------------------- Begin installdepends.sh logfile --------------------" >> $logfile
+
+usage="$(basename "$0") Usage: [-h] -- script to install the required dependencies to build Beyondcoin for Ubuntu (this will not build Beyondcoin).
+where:
+    -h show this help text
+"
+
+while getopts ':h' option; do
+  case "$option" in
+    h) echo "$usage"
+       exit
+       ;;
+  esac
+done
+
 function pause(){
     read -p "$*"
 }
@@ -118,5 +135,5 @@ cd ../..
 sudo apt-get upgrade -y
 sudo apt-get update -y
 
-echo "The dependencies required to build Beyondcoin for Ubuntu 18.04 have successfully been installed."
+echo "The dependencies required to build Beyondcoin for Ubuntu 18.04 have successfully been installed. ***This did not install Beyondcoin*** "
 read -n 1 -s -r -p "Press any key to continue..."
