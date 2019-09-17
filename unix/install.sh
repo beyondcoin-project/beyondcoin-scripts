@@ -21,7 +21,7 @@ Donations [BYND]: BT8UTx2HjJmtY99Fm748aBjSdKedJfWwnQ
 "
 pause "Press [Enter] to continue or [CTRL+C] to quit..."
 
-#add Bitcoin repository
+#add the Bitcoin repository
 sudo add-apt-repository ppa:bitcoin/bitcoin -y
 
 #shared libraries and dependencies
