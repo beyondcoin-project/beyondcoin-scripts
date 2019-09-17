@@ -13,7 +13,7 @@ echo "
 |____/ |______|   |_|   \____/ |_| \_||_____/  \_____|\____/|_____||_| \_|
                                                                           
 ==========================================================================
-Author: Kristian Kramer
+Author: Kristian Kramer <kristian@beyonddata.llc>
 Donations [BYND]: BT8UTx2HjJmtY99Fm748aBjSdKedJfWwnQ
 
 *** This script will install the required dependencies to build Beyondcoin on for Windows 10 on Ubuntu 18.04 ***
