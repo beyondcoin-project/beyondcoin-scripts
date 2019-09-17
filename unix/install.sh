@@ -1,7 +1,7 @@
 #!/bin/sh                                                      
 logfile=install_sh.log
 
-printf "install.sh logfile" >> $logfile
+printf "-------------------- BEGIN LOGFILE --------------------" >> $logfile
 
 usage="$(basename "$0") Usage: [-h] -- script to install the required dependencies and build Beyondcoin for Ubuntu
 where:
