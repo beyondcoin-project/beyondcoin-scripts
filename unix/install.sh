@@ -1,4 +1,21 @@
-#!/bin/sh
+#!/bin/sh                                                      
+logfile=install_sh.log
+
+printf "install.sh logfile" >> $logfile
+
+usage="$(basename "$0") Usage: [-h] -- script to install the required dependencies and build Beyondcoin for Ubuntu
+where:
+    -h show this help text
+"
+
+while getopts ':h' option; do
+  case "$option" in
+    h) echo "$usage"
+       exit
+       ;;
+  esac
+done
+
 function pause(){
     read -p "$*"
 }
@@ -17,7 +34,7 @@ Author: Kristian Kramer <kristian@beyonddata.llc>
 Donations [BYND]: BT8UTx2HjJmtY99Fm748aBjSdKedJfWwnQ
 
 *** This script will install the required dependencies and build Beyondcoin for Ubuntu 18.04 ***
-[NOTE]: to disable GUI, uncomment '--with-gui=no' on line 82.
+[NOTE]: to disable GUI, uncomment '--with-gui=no' on line 104.
 "
 pause "Press [Enter] to continue or [CTRL+C] to quit..."
 
@@ -60,32 +77,32 @@ sudo apt-get install \
     qttools5-dev-tools \
     libqrencode-dev \
     libminiupnpc-dev \
-    libzmq3-dev -y
+    libzmq3-dev -y >> $logfile
 
-sudo apt-get update -y
+sudo apt-get update -y >> $logfile
 
 #install BerkelyDB for wallet support
-sudo wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
-echo '12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef  db-4.8.30.NC.tar.gz' | sha256sum -c
+sudo wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz >> $logfile
+echo '12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef  db-4.8.30.NC.tar.gz' | sha256sum -c >> $logfile
 
-sudo tar -xvf db-4.8.30.NC.tar.gz
+sudo tar -xvf db-4.8.30.NC.tar.gz >> $logfile
 cd db-4.8.30.NC/build_unix
 sudo mkdir -p build
 BDB_PREFIX=$(pwd)/build
 sudo ../dist/configure --disable-shared --enable-cxx --with-pic --prefix=$BDB_PREFIX
-sudo make install
+sudo make install >> $logfile
 cd ../..
 
-sudo apt-get upgrade -y
-sudo apt-get update -y
+sudo apt-get upgrade -y >> $logfile
+sudo apt-get update -y >> $logfile
 #get Beyondcoin source
-sudo git clone https://github.com/Tech1k/beyondcoin.git
+sudo git clone https://github.com/Tech1k/beyondcoin.git >> $logfile
 sudo chmod -R 777 beyondcoin
 cd beyondcoin
 #build beyondcoin source
-./autogen.sh
-./configure #--with-gui=no
-sudo make install
+./autogen.sh >> $logfile
+./configure >> $logfile #--with-gui=no
+sudo make install >> $logfile
 
 cd ~/.beyondcoin
 #create config file
@@ -179,5 +196,6 @@ paytxfee=0.001
 #minimizetotray=1
 '" >beyondcoin.conf
 
-echo "Beyondcoin has successfully been installed...Binaries installed at '../usr/local/bin' and config file created at '~/.beyondcoin/beyondcoin.conf'"
+echo "Beyondcoin has successfully been installed...Binaries installed at '../usr/local/bin' and config file created at '~/.beyondcoin/beyondcoin.conf'" >> $logfile
+echo "Logfile avaliable at 'install_sh.log'" >> $logfile
 read -n 1 -s -r -p "Press any key to continue..."
