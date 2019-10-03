@@ -158,7 +158,7 @@ sudo wget 'https://download.qt.io/archive/qt/4.8/4.8.5/qt-everywhere-opensource-
 sudo wget 'https://svn.boost.org/trac/boost/raw-attachment/ticket/7262/boost-mingw.patch' -O boost-mingw-gas-cross-compile-2013-03-03.patch >> $logfile
 
 #download Beyondcoin source code
-sudo git clone https://github.com/Tech1k/beyondcoin.git >> $logfile
+sudo git clone https://github.com/beyondcoin-project/beyondcoin.git >> $logfile
 sudo chmod -R 777 beyondcoin
 
 sudo apt-get upgrade -y >> $logfile
