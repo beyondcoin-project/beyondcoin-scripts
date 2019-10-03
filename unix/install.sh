@@ -96,7 +96,7 @@ cd ../..
 sudo apt-get upgrade -y >> $logfile
 sudo apt-get update -y >> $logfile
 #get Beyondcoin source
-sudo git clone https://github.com/Tech1k/beyondcoin.git >> $logfile
+sudo git clone https://github.com/beyondcoin-project/beyondcoin.git >> $logfile
 sudo chmod -R 777 beyondcoin
 cd beyondcoin
 #build beyondcoin source
