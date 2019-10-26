@@ -3,7 +3,7 @@ logfile=install_sh.log
 
 printf "-------------------- BEGIN LOGFILE --------------------" >> $logfile
 
-usage="$(basename "$0") Usage: [-h] -- script to install the required dependencies and build Beyondcoin for Ubuntu
+usage="$(basename "$0") Usage: [-h] -- script to install the required dependencies and build Beyondcoin v0.15.2 for Ubuntu
 where:
     -h show this help text
 "
@@ -31,9 +31,9 @@ echo "
                                                                           
 **************************************************************************
 Author: Kristian Kramer <kristian@beyonddata.llc>
-Donations [BYND]: BT8UTx2HjJmtY99Fm748aBjSdKedJfWwnQ
+Donations [BYND]: BKJKT5ZpdxppVa8LDNxCYnfHHNNAA1Xdi1
 
-*** This script will install the required dependencies and build Beyondcoin for Ubuntu 18.04 ***
+*** This script will install the required dependencies and build Beyondcoin v0.15.2 for Ubuntu 18.04 ***
 [NOTE]: to disable GUI, uncomment '--with-gui=no' on line 104.
 "
 pause "Press [Enter] to continue or [CTRL+C] to quit..."
@@ -96,7 +96,7 @@ cd ../..
 sudo apt-get upgrade -y >> $logfile
 sudo apt-get update -y >> $logfile
 #get Beyondcoin source
-sudo git clone https://github.com/beyondcoin-project/beyondcoin.git >> $logfile
+sudo git clone https://github.com/beyondcoin-project/beyondcoin.git -b v0.15.2 >> $logfile
 sudo chmod -R 777 beyondcoin
 cd beyondcoin
 #build beyondcoin source
@@ -196,6 +196,6 @@ paytxfee=0.001
 #minimizetotray=1
 '" >beyondcoin.conf
 
-echo "Beyondcoin has successfully been installed...Binaries installed at '../usr/local/bin' and config file created at '~/.beyondcoin/beyondcoin.conf'" >> $logfile
+echo "Beyondcoin v0.15.2 has successfully been installed...Binaries installed at '../usr/local/bin' and config file created at '~/.beyondcoin/beyondcoin.conf'" >> $logfile
 echo "Logfile avaliable at 'install_sh.log'" >> $logfile
 read -n 1 -s -r -p "Press any key to continue..."

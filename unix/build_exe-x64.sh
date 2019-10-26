@@ -31,9 +31,9 @@ echo "
                                                                           
 **************************************************************************
 Author: Kristian Kramer <kristian@beyonddata.llc>
-Donations [BYND]: BT8UTx2HjJmtY99Fm748aBjSdKedJfWwnQ
+Donations [BYND]: BKJKT5ZpdxppVa8LDNxCYnfHHNNAA1Xdi1
 
-*** This script will install the required dependencies to build Beyondcoin on for Windows 10 (x64) on Ubuntu 18.04 and build Beyondcoin for Windows 10. ***
+*** This script will install the required dependencies to build Beyondcoin v0.15.2 on for Windows 10 (x64) on Ubuntu 18.04 and build Beyondcoin for Windows 10. ***
 "
 echo "[This script could take a few hours to finish (depending on your system)]"
 echo "[NOTICE]: this script is a work in progress, USE AT YOUR OWN RISK!"

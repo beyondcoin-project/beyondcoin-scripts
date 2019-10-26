@@ -31,9 +31,9 @@ echo "
                                                                           
 **************************************************************************
 Author: Kristian Kramer <kristian@beyonddata.llc>
-Donations [BYND]: BT8UTx2HjJmtY99Fm748aBjSdKedJfWwnQ
+Donations [BYND]: BKJKT5ZpdxppVa8LDNxCYnfHHNNAA1Xdi1
 
-*** This script will install the required dependencies to build Beyondcoin on Ubuntu 18.04 ***
+*** This script will install the required dependencies to build Beyondcoin v0.15.2 on Ubuntu 18.04 ***
 "
 pause "Press [Enter] to continue or [CTRL+C] to quit..."
 
